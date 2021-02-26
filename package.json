@@ -10,7 +10,8 @@
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
     "build": "npm run build:server && npm run build:assets && cp -R src/static build && cp -R src/views build",
     "prebuild": "rm -rf build",
-    "start": "node build/init.js"
+    "start": "PRODUCTION=true node build/init.js",
+    "prestart": "npm run build"
   },
   "author": "KimJiyeong",
   "license": "ISC",
