@@ -65,7 +65,6 @@ export const videoDetail = async (req, res) => {
         path: "comments",
         populate: { path: "creator", select: "name" },
       });
-    req.flash("success", "success upload");
     res.render("videoDetail", { pageTitle: video.title, video });
   } catch (error) {
     console.log(error);
