@@ -10,6 +10,7 @@ export const home = async (req, res) => {
     res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
+    req.flash("error", "Can't found videos");
     res.render("home", { pageTitle: "Home", videos: [] });
   }
 };
@@ -25,6 +26,7 @@ export const search = async (req, res) => {
       title: { $regex: term, $options: "i" },
     });
   } catch (error) {
+    req.flash("error", "can't found videos");
     console.log(error);
   }
   res.render("search", { pageTitle: "Search", term, videos });
@@ -63,9 +65,11 @@ export const videoDetail = async (req, res) => {
         path: "comments",
         populate: { path: "creator", select: "name" },
       });
+    req.flash("success", "success upload");
     res.render("videoDetail", { pageTitle: video.title, video });
   } catch (error) {
     console.log(error);
+    req.flash("error", "can't upload video");
     res.redirect(routes.home);
   }
 };
@@ -82,6 +86,7 @@ export const getEditVideo = async (req, res) => {
     }
     res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
   } catch (error) {
+    req.flash("error", "can't edit Video");
     console.log(error);
     res.redirect(routes.home);
   }
@@ -94,8 +99,10 @@ export const postEditVideo = async (req, res) => {
   } = req;
   try {
     await Video.findOneAndUpdate({ _id: id }, { title, description });
+    req.flash("success", "edit success");
     res.redirect(routes.videoDetail(id));
   } catch (error) {
+    req.flash("error", "fail edit");
     console.log(error);
     res.redirect(routes.home);
   }
@@ -115,7 +122,9 @@ export const deleteVideo = async (req, res) => {
     const creator = await User.findById(video.creator);
     await creator.videos.splice(creator.videos.indexOf(video.id), 1);
     await creator.save();
+    req.flash("success", "success delete");
   } catch (error) {
+    req.flash("error", "fail delete video");
     console.log(error);
   }
   res.redirect(routes.home);
