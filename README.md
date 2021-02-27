@@ -30,5 +30,5 @@ https://wetube2.herokuapp.com/
 
 ## to do list
 
-[] aws s3 보안설정
-[] mongodb atlas 보안설정
+- [ ] aws s3 보안설정
+- [ ] mongodb atlas 보안설정
