@@ -2,15 +2,28 @@
 
 Cloning Youtube with Vanilla and NodeJS
 
-## Pages:
+## Leaning
 
-- [ ] Home
-- [x] Join
-- [x] Login
-- [x] Search
-- [ ] User Detail
-- [ ] Edit Profile
-- [ ] Change Password
-- [ ] Upload
-- [ ] Video Detail
-- [ ] Edit Video
+WebServer
+
+- NodeJS
+- Express
+- Webpack
+- Babel
+- Passport
+- Multer
+- Pug
+- Heroku
+
+Database
+
+- MongoDB
+- MongoDB Atlas
+
+Media
+
+- AWS S3
+
+## Demo
+
+https://wetube2.herokuapp.com/
