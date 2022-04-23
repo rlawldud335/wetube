@@ -1,6 +1,7 @@
 # WeTube
 
-Cloning Youtube with Vanilla and NodeJS
+Cloning Youtube with Vanilla and NodeJS  
+https://nomadcoders.co/wetube 
 
 ## Leaning
 
